@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour
     public PlayerInputActions InputActions {  get; private set; }
     public PlayerInputActions.PlayerActions PlayerActions { get; private set; }
 
+    public KeyCode key = KeyCode.R;
+
     private void Awake()
     {
         InputActions = new PlayerInputActions();
@@ -20,5 +22,13 @@ public class PlayerInput : MonoBehaviour
     private void OnDisable()
     {
         InputActions.Disable();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            GetComponent<Player>().transform.position = Vector3.zero;
+        }
     }
 }
